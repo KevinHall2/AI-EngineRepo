@@ -2,10 +2,14 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "SampleScene.h"
+#include "DynamicArray.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
-ActorArray Engine::m_actorsToDelete = ActorArray();
+
+//template<typename T>
+//DynamicArray Engine::m_actorsToDelete = DynamicArray();
+
 int Engine::m_sceneCount = 0;
 int Engine::m_currentSceneIndex = 0;
 
@@ -214,24 +218,24 @@ void Engine::destroy(Actor* actor)
 
 void Engine::destroyActorsInList()
 {
-	//Iterate through deletion list
-	for (int i = 0; i < m_actorsToDelete.getLength(); i++)
-	{
-		//Remove actor from the scene
-		Actor* actorToDelete = m_actorsToDelete.getActor(i);
-		if (!getCurrentScene()->removeActor(actorToDelete))
-			getCurrentScene()->removeUIElement(actorToDelete);
+	////Iterate through deletion list
+	//for (int i = 0; i < m_actorsToDelete.getLength(); i++)
+	//{
+	//	//Remove actor from the scene
+	//	Actor* actorToDelete = m_actorsToDelete.getActor(i);
+	//	if (!getCurrentScene()->removeActor(actorToDelete))
+	//		getCurrentScene()->removeUIElement(actorToDelete);
 
-		//Call actors clean up functions
-		actorToDelete->end();
-		actorToDelete->onDestroy();
+	//	//Call actors clean up functions
+	//	actorToDelete->end();
+	//	actorToDelete->onDestroy();
 
-		//Delete the actor
-		delete actorToDelete;
-	}
+	//	//Delete the actor
+	//	delete actorToDelete;
+	//}
 
-	//Clear the array
-	m_actorsToDelete = ActorArray();
+	////Clear the array
+	//m_actorsToDelete = DynamicArray();
 }
 
 void Engine::CloseApplication()
