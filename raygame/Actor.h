@@ -1,4 +1,5 @@
 #pragma once
+#include "Component.h"
 class Transform2D;
 class Collider;
 class Component;
@@ -65,8 +66,8 @@ public:
         return nullptr;
     }
 
-    template<typename T>
-    T* addComponent(T* component)
+
+    Component* addComponent(Component* component)
     {
         //If this actor doesn't own this component...
         Actor* owner = component->getOwner();

@@ -7,8 +7,7 @@
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
 
-//template<typename T>
-//DynamicArray Engine::m_actorsToDelete = DynamicArray();
+//DynamicArray<T> m_actorsToDelete = DynamicArray.begin();
 
 int Engine::m_sceneCount = 0;
 int Engine::m_currentSceneIndex = 0;
