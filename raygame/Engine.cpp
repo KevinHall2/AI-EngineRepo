@@ -218,24 +218,25 @@ void Engine::destroy(Actor* actor)
 
 void Engine::destroyActorsInList()
 {
-	////Iterate through deletion list
-	//for (int i = 0; i < m_actorsToDelete.getLength(); i++)
-	//{
-	//	//Remove actor from the scene
-	//	Actor* actorToDelete = m_actorsToDelete.getActor(i);
-	//	if (!getCurrentScene()->removeActor(actorToDelete))
-	//		getCurrentScene()->removeUIElement(actorToDelete);
+	//Iterate through deletion list
+	for (int i = 0; i < m_actorsToDelete.getLength(); i++)
+	{
+		//Remove actor from the scene
+		Actor* actorToDelete = m_actorsToDelete.getActor(i);
+		if (!getCurrentScene()->removeActor(actorToDelete))
+			getCurrentScene()->removeUIElement(actorToDelete);
 
-	//	//Call actors clean up functions
-	//	actorToDelete->end();
-	//	actorToDelete->onDestroy();
+		//Call actors clean up functions
+		actorToDelete->end();
+		actorToDelete->onDestroy();
 
-	//	//Delete the actor
-	//	delete actorToDelete;
-	//}
+		//Delete the actor
+		delete actorToDelete;
+	}
 
-	////Clear the array
-	//m_actorsToDelete = DynamicArray();
+	//Clear the array
+
+	m_actorsToDelete = DynamicArray();
 }
 
 void Engine::CloseApplication()
