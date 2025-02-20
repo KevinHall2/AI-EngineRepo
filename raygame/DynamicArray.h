@@ -33,6 +33,7 @@ public:
 	void Remove(const T* array, int size);
 	void Remove(const DynamicArray<T>& other);
 	void Clear();
+	bool Contains(T* actor);
 
 private:
 	T* array;
@@ -266,4 +267,18 @@ template<typename T>
 inline void DynamicArray<T>::Clear()
 {
 	Resize(0);
+}
+
+template<typename T>
+inline bool DynamicArray<T>::Contains(T* actor)
+{
+	//Iterate through actor array
+	for (int i = 0; i < actor.m_length; i++)
+	{
+		//return true if the current actor if it matches the argument
+		if (m_array[i] == actor)
+			return true;
+	}
+
+	return false;
 }
