@@ -8,7 +8,7 @@
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
 
-DynamicArray<Actor>* m_actorsToDelete = new DynamicArray<Actor>();
+DynamicArray<Actor*> Engine::m_actorsToDelete;
 
 int Engine::m_sceneCount = 0;
 int Engine::m_currentSceneIndex = 0;
@@ -137,16 +137,16 @@ int Engine::addScene(Scene* scene)
 void Engine::addActorToDeletionList(Actor* actor)
 {
 	//return if the actor is already going to be deleted
-	if (m_actorsToDelete->Contains(actor))
+	if (m_actorsToDelete.Contains(actor))
 		return;
 
 	//Add actor to deletion list
-	m_actorsToDelete->Add(*actor);
+	m_actorsToDelete.Add(actor);
 
 	//Add all the actors children to the deletion list
 	for (int i = 0; i < actor->getTransform()->getChildCount(); i++)
 	{
-		m_actorsToDelete->Add(*actor->getTransform()->getChildren()[i]->getOwner());
+		m_actorsToDelete.Add(actor->getTransform()->getChildren()[i]->getOwner());
 	}
 }
 
@@ -219,7 +219,7 @@ void Engine::destroy(Actor* actor)
 void Engine::destroyActorsInList()
 {
 	//Iterate through deletion list
-	for (int i = 0; i < m_actorsToDelete->Length(); i++)
+	for (int i = 0; i < m_actorsToDelete.Length(); i++)
 	{
 		//Remove actor from the scene
 		Actor* actorToDelete = (m_actorsToDelete)[i];
@@ -236,7 +236,7 @@ void Engine::destroyActorsInList()
 
 	//Clear the array
 
-	m_actorsToDelete = new DynamicArray<Actor>();
+	m_actorsToDelete.Clear();
 }
 
 void Engine::CloseApplication()

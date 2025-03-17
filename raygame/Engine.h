@@ -110,7 +110,7 @@ private:
     static bool m_applicationShouldClose;
     static Scene** m_scenes;
     static int m_sceneCount;
-    static DynamicArray<Actor>* m_actorsToDelete;
+    static DynamicArray<Actor*> m_actorsToDelete;
     static int m_currentSceneIndex;
     static const int m_screenWidth = 700;
     static const int m_screenHeight = 800;

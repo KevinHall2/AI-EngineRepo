@@ -33,10 +33,10 @@ public:
 	void Remove(const T* array, int size);
 	void Remove(const DynamicArray<T>& other);
 	void Clear();
-	bool Contains(T* actor);
+	bool Contains(T actor);
 
 private:
-	T* array;
+	T* m_array;
 	int m_length;
 };
 
@@ -81,7 +81,7 @@ inline DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other)
 	m_length = other.m_length;
 	delete[] m_array;
 	m_array = new T[m_length];
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = other.m_array[i];
 	}
@@ -166,7 +166,7 @@ inline void DynamicArray<T>::Add(const DynamicArray<T>& other)
 {
 	int oldLength = m_length;
 	Resize(m_length + other.m_length);
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < m_length; i++)
 	{
 		m_array[oldLength + i] = other.m_array[i];
 	}
@@ -216,7 +216,7 @@ inline void DynamicArray<T>::Insert(int index, const DynamicArray<T>& other)
 	{
 		m_array[i] = m_array[i - other.m_length];
 	}
-	for (int i = 0; i < other.m_length); i++)
+	for (int i = 0; i < other.m_length; i++)
 	{
 		m_array[index + i] = other.m_array[i];
 	}
@@ -270,10 +270,10 @@ inline void DynamicArray<T>::Clear()
 }
 
 template<typename T>
-inline bool DynamicArray<T>::Contains(T* actor)
+inline bool DynamicArray<T>::Contains(T actor)
 {
 	//Iterate through actor array
-	for (int i = 0; i < actor.m_length; i++)
+	for (int i = 0; i < m_length; i++)
 	{
 		//return true if the current actor if it matches the argument
 		if (m_array[i] == actor)
