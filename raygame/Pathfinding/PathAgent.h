@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "pathfinding.h"
+#include "raymath.h"
 #include <vector>
 
 namespace pathfinding
@@ -21,5 +22,12 @@ namespace pathfinding
 		void GoToNode(Node* node);
 
 		void Draw();
+	};
+
+	class Behaviour;
+
+	class Agent
+	{
+
 	};
 }
