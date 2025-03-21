@@ -72,4 +72,9 @@ namespace pathfinding
     {
         DrawCircle(position.x, position.y, 8, { 255,255,0,255 });
     }
+
+    void PathAgent::AddBehavior(Behaviour* behavior)
+    {
+        m_behaviourList.push_back(behavior);
+    }
 }

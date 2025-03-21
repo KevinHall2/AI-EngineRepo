@@ -6,6 +6,9 @@
 
 namespace pathfinding
 {
+
+	class Behaviour;
+
 	class PathAgent
 	{
 	public:
@@ -18,16 +21,16 @@ namespace pathfinding
 		float speed;
 
 		void SetNode(Node* node);
-		void Update(float deltaTime);
+		virtual void Update(float deltaTime);
 		void GoToNode(Node* node);
 
+		void AddBehavior(Behaviour* behavior);
+
 		void Draw();
+
+	protected:
+		std::vector<Behaviour*> m_behaviourList;
 	};
 
-	class Behaviour;
 
-	class Agent
-	{
-
-	};
 }
