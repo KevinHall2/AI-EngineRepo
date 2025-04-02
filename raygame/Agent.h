@@ -1,10 +1,13 @@
 #pragma once
 #include "raymath.h"
 #include <vector>
+#include "Actor.h"
 
 class Behaviour;
 
-class Agent
+class Actor;
+
+class Agent : Actor
 {
 public:
 	Agent();
