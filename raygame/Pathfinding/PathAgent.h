@@ -3,13 +3,14 @@
 #include "pathfinding.h"
 #include "raymath.h"
 #include <vector>
+#include "../Actor.h"
 
 namespace pathfinding
 {
 
 	class Behaviour;
 
-	class PathAgent
+	class PathAgent : public Actor
 	{
 	public:
 		Vector2 position;

@@ -99,6 +99,12 @@ public:
     /// </summary>
     void run();
 
+    /// <summary>
+    /// Getter for scene indexes
+    /// </summary>
+    /// <returns></returns>
+    static int getSceneCount() { return m_sceneCount; }
+
 private:
     void start();
     void update(float deltaTime);

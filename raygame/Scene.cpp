@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Transform2D.h"
+#include "Engine.h"
 
 Scene::Scene()
 {
@@ -84,6 +85,8 @@ void Scene::update(float deltaTime)
                 m_actors[i]->onCollision(m_actors[j]);
         }
     }
+
+    goToNextScene();
 }
 
 void Scene::updateUI(float deltaTime)
@@ -126,4 +129,21 @@ void Scene::end()
     }
 
     m_started = false;
+}
+
+void Scene::goToNextScene()
+{
+    int currentIndex = Engine::getCurrentSceneIndex();
+    currentIndex++;
+
+    if (currentIndex > (Engine::getSceneCount() - 1))
+    {
+        currentIndex = 0;
+    }
+
+    if (Engine::getKeyPressed(KEY_E))
+    {
+        Engine::setCurrentScene(currentIndex);
+    }
+
 }

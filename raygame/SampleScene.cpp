@@ -31,10 +31,12 @@ void SampleScene::start()
 	test->getTransform()->setScale({ 50, 50 });
 
 	addActor(test);
+	addActor(m_pathAgent);
 }
 
 void SampleScene::update(float deltaTime)
 {
+    Scene::update(deltaTime);
     bool drawNodeMap = true;
     Color lineColor = { 255, 255, 255, 255 };
     m_nodeMap.Draw(true);
@@ -55,5 +57,5 @@ void SampleScene::update(float deltaTime)
 
 void SampleScene::end()
 {
-    delete m_pathAgent;
+    Scene::end();
 }

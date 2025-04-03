@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "SampleScene.h"
+#include "SteeringScene.h"
 #include "DynamicArray.h"
 #include "Actor.h"
 
@@ -34,6 +35,9 @@ void Engine::start()
 	//Start the scene
 	m_currentSceneIndex = addScene(new SampleScene());
 	m_scenes[m_currentSceneIndex]->start();
+	m_currentSceneIndex = addScene(new SteeringScene());
+	m_scenes[m_currentSceneIndex]->start();
+	m_currentSceneIndex = 0;
 }
 
 void Engine::update(float deltaTime)

@@ -2,6 +2,7 @@
 #include <Matrix3.h>
 #include "Actor.h"
 #include "DynamicArray.h"
+#include "raylib.h"
 
 class Scene
 {
@@ -54,7 +55,10 @@ public:
     /// <returns>False if the actor is a nullptr or isn't in the array.</returns>
     bool removeActor(Actor* actor);
 
-
+    /// <summary>
+    /// Increments the scene index to transition to the next scene
+    /// </summary>
+    void goToNextScene();
 
     virtual void start();
 
