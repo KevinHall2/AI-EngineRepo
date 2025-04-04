@@ -105,6 +105,9 @@ public:
     /// <returns></returns>
     static int getSceneCount() { return m_sceneCount; }
 
+    static const int m_screenWidth = 700;
+    static const int m_screenHeight = 800;
+
 private:
     void start();
     void update(float deltaTime);
@@ -118,6 +121,4 @@ private:
     static int m_sceneCount;
     static DynamicArray<Actor*> m_actorsToDelete;
     static int m_currentSceneIndex;
-    static const int m_screenWidth = 700;
-    static const int m_screenHeight = 800;
 };

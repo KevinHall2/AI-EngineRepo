@@ -13,6 +13,8 @@ DynamicArray<Actor*> Engine::m_actorsToDelete;
 
 int Engine::m_sceneCount = 0;
 int Engine::m_currentSceneIndex = 0;
+//int Engine::m_screenWidth = 700;
+//int Engine::m_screenHeight = 800;
 
 
 Engine::Engine()
@@ -27,9 +29,7 @@ Engine::Engine()
 void Engine::start()
 {
 	//Initialize window
-	int screenWidth = 700;
-	int screenHeight = 800;
-	InitWindow(screenWidth, screenHeight, "Intro To C++");
+	InitWindow(m_screenWidth, m_screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
 	//Start the scene
