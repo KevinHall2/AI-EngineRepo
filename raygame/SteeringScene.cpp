@@ -10,47 +10,32 @@
 void SteeringScene::start()
 {
 	Engine::getSceneCount();
-
-	Vector2 firstPatrolTarget = { (float)(Engine::m_screenWidth - 100), (float)(Engine::m_screenHeight - 500) };
-	Vector2 secondPatrolTarget = { (float)(Engine::m_screenWidth - 500), (float)(Engine::m_screenHeight - 100) };
-
-	Vector2 goblinPosition = { (float)(Engine::m_screenWidth / 2 - 5),(float)(Engine::m_screenHeight / 2 - 5) };
-
-	Vector2 peasantPosition = { (float)(Engine::m_screenWidth / 2 + 5),(float)(Engine::m_screenHeight / 2 + 5) };
-
-	ArriveBehaviour* patrolAgentBehavior = new ArriveBehaviour();
-
-	WanderBehaviour* goblinWanderBehavior = new WanderBehaviour();
-	FleeBehaviour* goblinFleeBehavior = new FleeBehaviour();
-	ArriveBehaviour* goblinArriveBehavior = new ArriveBehaviour();
-
-	WanderBehaviour* peasantWanderBehavior = new WanderBehaviour();
-	ArriveBehaviour* peasantArriveBehavior = new ArriveBehaviour();
-
-	Agent* patrolAgent = new Agent();
-	patrolAgent->SetPosition({ (float)(Engine::m_screenWidth >> 1), (float)(Engine::m_screenHeight >> 1) });
+	
+	m_patrolAgent->SetPosition({ (float)(Engine::m_screenWidth >> 1), (float)(Engine::m_screenHeight >> 1) });
 	//patrolAgentBehavior->SetDestination(firstPatrolTarget);
-	patrolAgent->AddBehaviour(patrolAgentBehavior);
+	m_patrolAgent->AddBehaviour(m_patrolAgentBehavior);
+	addActor(m_patrolAgent);
 
-	Agent* goblinAgent = new Agent();
-	goblinAgent->SetPosition(goblinPosition);
-	goblinAgent->AddBehaviour(goblinWanderBehavior);
-	goblinAgent->AddBehaviour(goblinFleeBehavior);
-	goblinAgent->AddBehaviour(goblinArriveBehavior);
+	
+	m_goblinAgent->SetPosition(m_goblinPosition);
+	m_goblinAgent->AddBehaviour(m_goblinWanderBehavior);
+	m_goblinAgent->AddBehaviour(m_goblinFleeBehavior);
+	m_goblinAgent->AddBehaviour(m_goblinArriveBehavior);
+	addActor(m_goblinAgent);
 
 
-	Agent* peasantAgent = new Agent();
-	peasantAgent->SetPosition(peasantPosition);
-	peasantAgent->AddBehaviour(peasantWanderBehavior);
-	peasantAgent->AddBehaviour(peasantArriveBehavior);
-	addActor(peasantAgent);
+	//Agent* peasantAgent = new Agent();
+	m_peasantAgent->SetPosition(m_peasantPosition);
+	m_peasantAgent->AddBehaviour(m_peasantWanderBehavior);
+	m_peasantAgent->AddBehaviour(m_peasantArriveBehavior);
+	addActor(m_peasantAgent);
 }
 
 void SteeringScene::update(float deltaTime)
 {
 	Scene::update(deltaTime);
 	Scene::draw();
-
+	m_peasantAgent->Actor::draw();
 }
 
 void SteeringScene::end()
