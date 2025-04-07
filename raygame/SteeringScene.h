@@ -7,6 +7,8 @@
 #include "ArriveBehaviour.h"
 #include "Engine.h"
 #include "raylib.h"
+#include "SpriteComponent.h"
+#include "Transform2D.h"
 
 class SteeringScene : public Scene
 {
@@ -28,9 +30,11 @@ private:
 	Vector2 m_firstPatrolTarget = { (float)(Engine::m_screenWidth - 100), (float)(Engine::m_screenHeight - 500) };
 	Vector2 m_secondPatrolTarget = { (float)(Engine::m_screenWidth - 500), (float)(Engine::m_screenHeight - 100) };
 
-	Vector2 m_goblinPosition = { (float)(Engine::m_screenWidth / 2 - 5),(float)(Engine::m_screenHeight / 2 - 5) };
+	Vector2 m_patrolPosition = { (float)350,(float)400 };
 
-	Vector2 m_peasantPosition = { (float)(Engine::m_screenWidth / 2 + 5),(float)(Engine::m_screenHeight / 2 + 5) };
+	Vector2 m_goblinPosition = { (float)300,(float)350 };
+
+	Vector2 m_peasantPosition = { (float)400,(float)450 };
 
 	ArriveBehaviour* m_patrolAgentBehavior = new ArriveBehaviour();
 

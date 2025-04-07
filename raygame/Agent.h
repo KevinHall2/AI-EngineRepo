@@ -14,10 +14,10 @@ public:
 	virtual ~Agent();
 
 	// Update the agent and its behaviours
-	virtual void Update(float deltaTime);
+	virtual void update(float deltaTime) override;
 
 	// Draw the agent
-	virtual void Draw();
+	virtual void draw() override;
 
 	// Add a behaviour to the agent
 	void AddBehaviour(Behaviour* behaviour);
