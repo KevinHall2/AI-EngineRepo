@@ -1,10 +1,11 @@
 #include "SteeringScene.h"
 #include "Engine.h"
 #include "raylib.h"
-#include "Pathfinding/SeekBehavior/SeekBehaviour.h"
-#include "Pathfinding/WanderBehavior/WanderBehaviour.h"
-#include "Pathfinding/FleeBehavior/FleeBehaviour.h"
-#include "Pathfinding/ArriveBehavior/ArriveBehaviour.h"
+#include "SeekBehaviour.h"
+#include "WanderBehaviour.h"
+#include "FleeBehaviour.h"
+#include "ArriveBehaviour.h"
+#include "Agent.h"
 
 void SteeringScene::start()
 {
@@ -42,11 +43,13 @@ void SteeringScene::start()
 	peasantAgent->SetPosition(peasantPosition);
 	peasantAgent->AddBehaviour(peasantWanderBehavior);
 	peasantAgent->AddBehaviour(peasantArriveBehavior);
+	addActor(peasantAgent);
 }
 
 void SteeringScene::update(float deltaTime)
 {
 	Scene::update(deltaTime);
+	Scene::draw();
 
 }
 

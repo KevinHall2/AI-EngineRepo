@@ -9,9 +9,11 @@ public:
     void update(float deltaTime) override;
     void end() override;
 
-    int m_patrolState = 0;
 
 private:
+    int m_patrolState = 0;
+
+
 
 };
 

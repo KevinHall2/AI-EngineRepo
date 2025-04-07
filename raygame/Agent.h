@@ -5,9 +5,9 @@
 
 class Behaviour;
 
-class Actor;
 
-class Agent : Actor
+
+class Agent : public Actor
 {
 public:
 	Agent();
