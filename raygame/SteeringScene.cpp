@@ -4,27 +4,27 @@
 void SteeringScene::start()
 {
 	Engine::getSceneCount();
-	
-	m_patrolAgent->SetMaxSpeed(1650);
+
+	m_patrolAgent->SetMaxSpeed(1400);
 	m_patrolAgent->SetPosition(m_patrolPosition);
 	m_patrolAgent->AddBehaviour(m_patrolAgentBehavior);
 	addActor(m_patrolAgent);
 	m_patrolAgent->addComponent(new SpriteComponent(m_patrolAgent, "Images/player.png"));
 	m_patrolAgent->getTransform()->setScale({ 50, 50 });
 
-	m_goblinAgent->SetMaxSpeed(1650);
+	m_goblinAgent->SetMaxSpeed(1400);
 	m_goblinAgent->SetPosition(m_goblinPosition);
 	m_goblinAgent->AddBehaviour(m_goblinWanderBehavior);
 	m_goblinAgent->AddBehaviour(m_goblinFleeBehavior);
-	m_goblinAgent->AddBehaviour(m_goblinArriveBehavior);
+	//m_goblinAgent->AddBehaviour(m_goblinArriveBehavior);
 	addActor(m_goblinAgent);
 	m_goblinAgent->addComponent(new SpriteComponent(m_goblinAgent, "Images/enemy.png"));
 	m_goblinAgent->getTransform()->setScale({ 50, 50 });
 	
-	m_peasantAgent->SetMaxSpeed(1650);
+	m_peasantAgent->SetMaxSpeed(1400);
 	m_peasantAgent->SetPosition(m_peasantPosition);
 	m_peasantAgent->AddBehaviour(m_peasantWanderBehavior);
-	m_peasantAgent->AddBehaviour(m_peasantArriveBehavior);
+	//m_peasantAgent->AddBehaviour(m_peasantArriveBehavior);
 	addActor(m_peasantAgent);
 	m_peasantAgent->addComponent(new SpriteComponent(m_peasantAgent, "Images/bullet.png"));
 	m_peasantAgent->getTransform()->setScale({ 50, 50 });
@@ -36,7 +36,6 @@ void SteeringScene::update(float deltaTime)
 
 	DrawLine(m_firstPatrolTarget.x - 5, m_firstPatrolTarget.y, m_firstPatrolTarget.x + 5, m_firstPatrolTarget.y, BLUE);
 	DrawLine(m_firstPatrolTarget.x, m_firstPatrolTarget.y - 5, m_firstPatrolTarget.x, m_firstPatrolTarget.y + 5, BLUE);
-
 	DrawLine(m_secondPatrolTarget.x - 5, m_secondPatrolTarget.y, m_secondPatrolTarget.x + 5, m_secondPatrolTarget.y, BLUE);
 	DrawLine(m_secondPatrolTarget.x, m_secondPatrolTarget.y - 5, m_secondPatrolTarget.x, m_secondPatrolTarget.y + 5, BLUE);
 
@@ -79,6 +78,18 @@ void SteeringScene::update(float deltaTime)
 	if (goblinScreenWrapper.x > Engine::m_screenWidth)
 		goblinScreenWrapper.x = 0;
 	m_goblinAgent->SetPosition(goblinScreenWrapper);
+
+
+	Vector2 peasantScreenWrapper = m_peasantAgent->GetPosition();
+	if (peasantScreenWrapper.y < 0)
+		peasantScreenWrapper.y = Engine::m_screenHeight;
+	if (peasantScreenWrapper.y > Engine::m_screenHeight)
+		peasantScreenWrapper.y = 0;
+	if (peasantScreenWrapper.x < 0)
+		peasantScreenWrapper.x = Engine::m_screenWidth;
+	if (peasantScreenWrapper.x > Engine::m_screenWidth)
+		peasantScreenWrapper.x = 0;
+	m_peasantAgent->SetPosition(peasantScreenWrapper);
 
 	m_patrolAgent->update(deltaTime);
 	m_goblinAgent->update(deltaTime);

@@ -16,8 +16,8 @@ private:
 	Vector2 SetAngle(Vector2 vector, float value);
 
 private:
-	float m_circleDistance = 60;
-	float m_circleRadius = 50;
+	float m_circleDistance = 790;
+	float m_circleRadius = 590;
 	float m_wanderAngle = 0;
 
 	const float m_angleChange = 50;
