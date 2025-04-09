@@ -5,12 +5,14 @@ void SteeringScene::start()
 {
 	Engine::getSceneCount();
 	
+	m_patrolAgent->SetMaxSpeed(1650);
 	m_patrolAgent->SetPosition(m_patrolPosition);
 	m_patrolAgent->AddBehaviour(m_patrolAgentBehavior);
 	addActor(m_patrolAgent);
 	m_patrolAgent->addComponent(new SpriteComponent(m_patrolAgent, "Images/player.png"));
 	m_patrolAgent->getTransform()->setScale({ 50, 50 });
 
+	m_goblinAgent->SetMaxSpeed(1650);
 	m_goblinAgent->SetPosition(m_goblinPosition);
 	m_goblinAgent->AddBehaviour(m_goblinWanderBehavior);
 	m_goblinAgent->AddBehaviour(m_goblinFleeBehavior);
@@ -19,7 +21,7 @@ void SteeringScene::start()
 	m_goblinAgent->addComponent(new SpriteComponent(m_goblinAgent, "Images/enemy.png"));
 	m_goblinAgent->getTransform()->setScale({ 50, 50 });
 	
-
+	m_peasantAgent->SetMaxSpeed(1650);
 	m_peasantAgent->SetPosition(m_peasantPosition);
 	m_peasantAgent->AddBehaviour(m_peasantWanderBehavior);
 	m_peasantAgent->AddBehaviour(m_peasantArriveBehavior);
