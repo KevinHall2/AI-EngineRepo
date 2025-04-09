@@ -69,7 +69,16 @@ void SteeringScene::update(float deltaTime)
 		break;
 	}
 
-	
+	Vector2 goblinScreenWrapper = m_goblinAgent->GetPosition();
+	if (goblinScreenWrapper.y < 0)
+		goblinScreenWrapper.y = Engine::m_screenHeight;
+	if (goblinScreenWrapper.y > Engine::m_screenHeight)
+		goblinScreenWrapper.y = 0;
+	if (goblinScreenWrapper.x < 0)
+		goblinScreenWrapper.x = Engine::m_screenWidth;
+	if (goblinScreenWrapper.x > Engine::m_screenWidth)
+		goblinScreenWrapper.x = 0;
+	m_goblinAgent->SetPosition(goblinScreenWrapper);
 
 	m_patrolAgent->update(deltaTime);
 	m_goblinAgent->update(deltaTime);
