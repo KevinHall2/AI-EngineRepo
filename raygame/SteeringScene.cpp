@@ -6,7 +6,6 @@ void SteeringScene::start()
 	Engine::getSceneCount();
 	
 	m_patrolAgent->SetPosition(m_patrolPosition);
-	//patrolAgentBehavior->SetDestination(firstPatrolTarget);
 	m_patrolAgent->AddBehaviour(m_patrolAgentBehavior);
 	addActor(m_patrolAgent);
 	m_patrolAgent->addComponent(new SpriteComponent(m_patrolAgent, "Images/player.png"));
@@ -31,6 +30,48 @@ void SteeringScene::start()
 
 void SteeringScene::update(float deltaTime)
 {
+	Vector2 patrolStateDeterminer = m_patrolAgent->GetPosition();
+
+	DrawLine(m_firstPatrolTarget.x - 5, m_firstPatrolTarget.y, m_firstPatrolTarget.x + 5, m_firstPatrolTarget.y, BLUE);
+	DrawLine(m_firstPatrolTarget.x, m_firstPatrolTarget.y - 5, m_firstPatrolTarget.x, m_firstPatrolTarget.y + 5, BLUE);
+
+	DrawLine(m_secondPatrolTarget.x - 5, m_secondPatrolTarget.y, m_secondPatrolTarget.x + 5, m_secondPatrolTarget.y, BLUE);
+	DrawLine(m_secondPatrolTarget.x, m_secondPatrolTarget.y - 5, m_secondPatrolTarget.x, m_secondPatrolTarget.y + 5, BLUE);
+
+	//clamp if statement in case of overflow
+	if (m_patrolState > 1 || m_patrolState < 0)
+	{
+		m_patrolState = 0;
+	}
+
+	//if statement to adjust patrol agent target depending on proximity
+	if (patrolStateDeterminer.x == m_firstPatrolTarget.x && patrolStateDeterminer.y == m_firstPatrolTarget.y)
+	{
+		m_patrolState++;
+	}
+	else if (patrolStateDeterminer.x == m_secondPatrolTarget.x && patrolStateDeterminer.y == m_secondPatrolTarget.y)
+	{
+		m_patrolState--;
+	}
+
+	switch (m_patrolState)
+	{
+	case 0:
+		m_patrolAgentBehavior->SetDestination(m_firstPatrolTarget);
+		break;
+	case 1:
+		m_patrolAgentBehavior->SetDestination(m_secondPatrolTarget);
+		break;
+	default:
+		m_patrolAgentBehavior->SetDestination(m_patrolPosition);
+		break;
+	}
+
+	
+
+	m_patrolAgent->update(deltaTime);
+	m_goblinAgent->update(deltaTime);
+	m_peasantAgent->update(deltaTime);
 	Scene::update(deltaTime);
 
 }

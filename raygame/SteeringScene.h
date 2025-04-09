@@ -36,7 +36,7 @@ private:
 
 	Vector2 m_peasantPosition = { (float)400,(float)450 };
 
-	ArriveBehaviour* m_patrolAgentBehavior = new ArriveBehaviour();
+	SeekBehaviour* m_patrolAgentBehavior = new SeekBehaviour();
 
 	WanderBehaviour* m_goblinWanderBehavior = new WanderBehaviour();
 	FleeBehaviour* m_goblinFleeBehavior = new FleeBehaviour();
