@@ -34,11 +34,23 @@ public:
 
 	void AddForce(Vector2 force) { m_force = Vector2Add(force, m_force); }
 
+	Agent* m_target = nullptr;
+
 private:
 	Vector2 Truncate(Vector2 v, float max);
 
 protected:
 	std::vector<Behaviour*> m_behaviourList;
+
+	enum behaviorNumbers 
+	{
+		NONE,
+		WANDER,
+		ARRIVE,
+		FLEE
+	};
+
+	behaviorNumbers m_behaviorState = NONE;
 
 	Vector2 m_position = { 0, 0 };
 	Vector2 m_velocity = { 0, 0 };

@@ -1,6 +1,6 @@
 #include "SeekBehaviour.h"
 
-bool SeekBehaviour::Update(Agent* agent, float deltaTime)
+bool SeekBehaviour::Update(Agent* agent, float deltaTime, Agent* target)
 {
 	Vector2 v = Vector2Subtract(m_destination, agent->GetPosition());
 

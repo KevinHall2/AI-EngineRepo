@@ -8,7 +8,7 @@ public:
 	WanderBehaviour();
 	virtual ~WanderBehaviour() {};
 
-	virtual bool Update(Agent* agent, float deltaTime);
+	virtual bool Update(Agent* agent, float deltaTime, Agent* target);
 
 	void Draw(Agent* agent);	// for debug only
 

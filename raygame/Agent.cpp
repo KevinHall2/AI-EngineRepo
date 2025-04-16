@@ -32,7 +32,7 @@ void Agent::update(float deltaTime)
 
 	for (int i = 0; i < m_behaviourList.size(); i++)
 	{
-		m_behaviourList[i]->Update(this, deltaTime);
+		m_behaviourList[i]->Update(this, deltaTime, m_target);
 	}
 
 	// If (velocity + steering) equals zero, then there is no movement

@@ -40,6 +40,8 @@ public:
     /// <returns></returns>
     const char* getName() { return m_name; }
 
+    int iD;
+
     /// <summary>
     /// Iterates through all components in the component array to find one
     /// that matches the given name.

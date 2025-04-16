@@ -1,6 +1,6 @@
 #include "ArriveBehaviour.h"
 
-bool ArriveBehaviour::Update(Agent* agent, float deltaTime)
+bool ArriveBehaviour::Update(Agent* agent, float deltaTime, Agent* target)
 {
 	Vector2 desiredVelocity = Vector2Subtract(m_destination, agent->GetPosition());
 	float distance = Vector2Length(desiredVelocity);

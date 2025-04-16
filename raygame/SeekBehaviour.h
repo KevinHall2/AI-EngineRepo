@@ -7,7 +7,7 @@ public:
 	SeekBehaviour() {};
 	virtual ~SeekBehaviour() {};
 
-	virtual bool Update(Agent* agent, float deltaTime);
+	virtual bool Update(Agent* agent, float deltaTime, Agent* target);
 	void SetDestination(Vector2 destination) { m_destination = destination; }
 
 private:

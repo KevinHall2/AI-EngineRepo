@@ -1,14 +1,17 @@
 #include "FleeBehaviour.h"
 
-bool FleeBehaviour::Update(Agent* agent, float deltaTime)
+bool FleeBehaviour::Update(Agent* agent, float deltaTime, Agent* target)
 {
-	Vector2 v = Vector2Subtract(agent->GetPosition(), m_destination);
+	if (!target)
+		return false;
+
+	Vector2 v = Vector2Subtract(agent->GetPosition(), target->GetPosition());
 
 	float distance = Vector2Length(v);
 	if (distance > m_fleeRadius)
 	{
-		agent->AddForce({ -agent->GetVelocity().x, -agent->GetVelocity().y });
-		return true;
+		//agent->AddForce({ -agent->GetVelocity().x, -agent->GetVelocity().y });
+		return false;
 	}
 
 	if (distance == 0)	// on top of destination
