@@ -131,6 +131,8 @@ namespace pathfinding
 
 		//Initialize the starting node
 		startNode->gScore = 0;
+		startNode->hScore = 0;
+		startNode->fScore = 0;
 		startNode->previous = nullptr;
 
 		//Create our temporary lists for storing nodes
@@ -172,7 +174,7 @@ namespace pathfinding
 					//Calculate the target node's G Score
 					e.target->gScore = currentNode->gScore + e.cost;
 					//Calculate the target node's H score
-					e.target->hScore = abs(currentNode->position.x - .x) + abs(currentNode->position.y - .y);
+					e.target->hScore = abs(currentNode->position.x - endNode->position.x) + abs(currentNode->position.y - endNode->position.y);
 					//Calculate the target node's F score
 					e.target->fScore = e.target->gScore + e.target->hScore;
 					//Set the target node's previous to currentNode
