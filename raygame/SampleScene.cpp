@@ -10,14 +10,14 @@ void SampleScene::start()
 
     m_nodeMap.cellSize = 32;
     std::vector<std::string> asciiMap;
-    asciiMap.push_back("000000000000");
-    asciiMap.push_back("010111011100");
-    asciiMap.push_back("010101110110");
-    asciiMap.push_back("010100000000");
-    asciiMap.push_back("010111111110");
-    asciiMap.push_back("010000001000");
-    asciiMap.push_back("011111111110");
-    asciiMap.push_back("000000000000");
+    asciiMap.push_back("000000000000000");
+    asciiMap.push_back("010111011101010");
+    asciiMap.push_back("011101110111110");
+    asciiMap.push_back("010100000100010");
+    asciiMap.push_back("011111111111110");
+    asciiMap.push_back("010001001000100");
+    asciiMap.push_back("011111111110000");
+    asciiMap.push_back("000000000000000");
     m_nodeMap.Initialise(asciiMap);
 
     m_pathAgent = new pathfinding::PathAgent();

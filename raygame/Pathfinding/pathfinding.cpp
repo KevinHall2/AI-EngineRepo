@@ -171,6 +171,10 @@ namespace pathfinding
 				if (std::find(openList.begin(), openList.end(), e.target) == openList.end()) {
 					//Calculate the target node's G Score
 					e.target->gScore = currentNode->gScore + e.cost;
+					//Calculate the target node's H score
+					e.target->hScore = abs(currentNode->position.x - .x) + abs(currentNode->position.y - .y);
+					//Calculate the target node's F score
+					e.target->fScore = e.target->gScore + e.target->hScore;
 					//Set the target node's previous to currentNode
 					e.target->previous = currentNode;
 					//Find the earliest point we should insert the node

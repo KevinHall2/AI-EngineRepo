@@ -64,7 +64,7 @@ namespace pathfinding
 
     void PathAgent::GoToNode(Node* node)
     {
-        path = DijkstrasSearch(currentNode, node);
+        path = AStarSearch(currentNode, node);
         currentIndex = 0;
     }
 

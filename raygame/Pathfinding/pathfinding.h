@@ -22,6 +22,8 @@ namespace pathfinding {
 		Vector2 position;
 
 		float gScore;
+		float hScore;
+		float fScore;
 		Node* previous;
 
 		std::vector<Edge> connections;

@@ -12,6 +12,6 @@ public:
 
 private:
 	Vector2 m_destination;
-	float m_fleeRadius = 100;
+	float m_fleeRadius = 350;
 };
 
