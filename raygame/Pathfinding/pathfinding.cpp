@@ -5,9 +5,9 @@
 namespace pathfinding
 {
 	//Use this function to sort nodes using their gScore value
-	bool NodeSort(Node* i, Node* j) 
+	bool NodeSortAStar(Node* i, Node* j) 
 	{ 
-		return (i->gScore < j->gScore); 
+		return (i->fScore < j->fScore); 
 	}
 
 	void Node::ConnectTo(Node* other, float cost)
@@ -45,7 +45,7 @@ namespace pathfinding
 		while (!openList.empty())
 		{
 			//Sort openList based on gScore using the function created above
-			std::sort(openList.begin(), openList.end(), NodeSort);
+			std::sort(openList.begin(), openList.end(), NodeSortAStar);
 
 			//Set the current node to the first node in the openList
 			Node* currentNode = openList.front();
@@ -146,7 +146,7 @@ namespace pathfinding
 		while (!openList.empty())
 		{
 			//Sort openList based on gScore using the function created above
-			std::sort(openList.begin(), openList.end(), NodeSort);
+			std::sort(openList.begin(), openList.end(), NodeSortAStar);
 
 			//Set the current node to the first node in the openList
 			Node* currentNode = openList.front();
@@ -183,7 +183,7 @@ namespace pathfinding
 					//to the list to keep it sorted
 					auto insertionPos = openList.end();
 					for (auto i = openList.begin(); i != openList.end(); i++) {
-						if (e.target->gScore < (*i)->gScore) {
+						if (e.target->fScore < (*i)->fScore) {
 							insertionPos = i;
 							break;
 						}
